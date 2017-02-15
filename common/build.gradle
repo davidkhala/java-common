@@ -1,0 +1,17 @@
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+dependencies {
+    compile 'com.google.code.findbugs:jsr305:2.0.1'
+    compile 'com.google.guava:guava:18.0'
+    compile 'com.madgag.spongycastle:pkix:1.51.0.0'
+    compile 'org.bouncycastle:bcpkix-jdk15on:1.55'
+    compile 'junit:junit:4.12'//TODO how to export testCompile
+}
+
+if(!project.hasProperty("useJack") || !project.useJack){
+    sourceCompatibility="1.7"
+    targetCompatibility="1.7"
+}
