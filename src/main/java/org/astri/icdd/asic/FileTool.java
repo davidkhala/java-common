@@ -1,5 +1,6 @@
-package org.astri.ICDD.ASIC;
+package org.astri.icdd.asic;
 
+import com.google.common.base.Preconditions;
 import com.google.common.io.Files;
 
 import java.io.File;
@@ -9,12 +10,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created by davidliu on 9/29/2016.
  */
 
 public class FileTool {
     public static void write(File targetFile, String content) throws IOException {
+        targetFile.createNewFile();
         FileOutputStream fop = new FileOutputStream(targetFile);
 
 
@@ -36,11 +40,25 @@ public class FileTool {
         byte[] buffer = new byte[size];
         is.read(buffer);
         is.close();
-        return new String(buffer, "UTF-8");
+        return new String(buffer);
     }
 
-    public static void copy(File from, File to) throws IOException {
-        Files.copy(from, to);
+    public static int copyDir(@Nonnull File from,@Nonnull File to) throws IOException {
+        Preconditions.checkArgument(from.isDirectory(),"source file should be directory:"+from.getPath());
+        Preconditions.checkArgument(to.isDirectory(),"target file should be directory:"+to.getPath());
+        File[] files = from.listFiles();
+        if(files==null)return -1;
+        for(File file: files){
+            File targetFile = new File(to,file.getName());
+            if(file.isDirectory()){
+                if(targetFile.mkdir()){
+                    copyDir(file,targetFile);
+                }
+            }else {
+                Files.copy(file,targetFile);
+            }
+        }
+        return files.length;
     }
 
     public static boolean deleteDir(File dir) {

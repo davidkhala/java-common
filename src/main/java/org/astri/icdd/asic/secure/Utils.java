@@ -1,10 +1,9 @@
-package org.astri.ICDD.ASIC.secure;
+package org.astri.icdd.asic.secure;
 
 import com.google.common.io.BaseEncoding;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * Created by davidliu on 2/1/2017.

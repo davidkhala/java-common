@@ -1,4 +1,4 @@
-package org.astri.ICDD.ASIC.secure;
+package org.astri.icdd.asic.secure;
 
 import org.spongycastle.asn1.x500.X500Name;
 import org.spongycastle.operator.ContentSigner;

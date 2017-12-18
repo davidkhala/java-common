@@ -1,4 +1,4 @@
-package org.astri.ICDD.ASIC.secure;
+package org.astri.icdd.asic.secure;
 
 import org.spongycastle.asn1.x500.X500Name;
 import org.spongycastle.operator.OperatorCreationException;
@@ -23,16 +23,29 @@ public class AstriCertTool {
     public static String CN_REGEX = "(?<=CN\\s{0,4}=\\s{0,4})[^,=]+(?!=\\s*,)";
 
 
-    public static String extractCertificateIdentity(X509Certificate certificate) {
+    public static String extractSubjectCN(X509Certificate certificate) {
         String identity = null;
 
         String name = certificate.getSubjectDN().getName();
-        System.out.println("Subject DN:" + name);
         Pattern pattern = Pattern.compile(CN_REGEX);
         Matcher matcher = pattern.matcher(name);
         if (matcher.find()) {
             identity = matcher.group();
-            System.out.println("Subject CN:" + identity);
+        } else {
+            System.err.println("CN name not found in Subject DN:" + name);
+        }
+
+        return identity;
+    }
+
+    public static String extractIssuerCN(X509Certificate certificate) {
+        String identity = null;
+
+        String name = certificate.getIssuerDN().getName();
+        Pattern pattern = Pattern.compile(CN_REGEX);
+        Matcher matcher = pattern.matcher(name);
+        if (matcher.find()) {
+            identity = matcher.group();
         } else {
             System.err.println("CN name not found in Subject DN:" + name);
         }

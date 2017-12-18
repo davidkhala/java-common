@@ -1,12 +1,10 @@
-package org.astri.ICDD.ASIC.secure;
+package org.astri.icdd.asic.secure;
 
 import java.security.KeyFactory;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
-import java.security.PrivateKey;
-import java.security.PublicKey;
 import java.security.interfaces.RSAPrivateCrtKey;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
@@ -27,19 +25,6 @@ public class RSAKeyPair {
         return get(null);
     }
 
-    public static KeyPair get(@Nullable String provider) {
-        try {
-            KeyPairGenerator generator = provider == null ? KeyPairGenerator.getInstance("RSA") : KeyPairGenerator.getInstance("RSA", provider);//"BC", "AndroidOpenSSL"
-            if (provider == null)
-                System.out.println("RSAKeypair generator default provider: " + generator.getProvider());
-            generator.initialize(2048);
-            return generator.generateKeyPair();
-        } catch (NoSuchAlgorithmException | NoSuchProviderException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
     public static RSAPublicKey recoverPubKey(byte[] pubBytes) {
         try {
             return (RSAPublicKey) KeyFactory.getInstance("RSA").generatePublic(new X509EncodedKeySpec(pubBytes));
@@ -53,6 +38,19 @@ public class RSAKeyPair {
         try {
             return (RSAPublicKey) KeyFactory.getInstance("RSA").generatePublic(new RSAPublicKeySpec(privateCrtKey.getModulus(), privateCrtKey.getPublicExponent()));
         } catch (InvalidKeySpecException | NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static KeyPair get(@Nullable String provider) {
+        try {
+            KeyPairGenerator generator = provider == null ? KeyPairGenerator.getInstance("RSA") : KeyPairGenerator.getInstance("RSA", provider);//"BC", "AndroidOpenSSL"
+            if (provider == null)
+                System.out.println("RSAKeypair generator default provider: " + generator.getProvider());
+            generator.initialize(2048);
+            return generator.generateKeyPair();
+        } catch (NoSuchAlgorithmException | NoSuchProviderException e) {
             e.printStackTrace();
             return null;
         }

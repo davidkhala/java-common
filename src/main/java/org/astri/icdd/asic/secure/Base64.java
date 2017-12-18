@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.astri.ICDD.ASIC.secure;
+package org.astri.icdd.asic.secure;
 
 import java.io.UnsupportedEncodingException;
 

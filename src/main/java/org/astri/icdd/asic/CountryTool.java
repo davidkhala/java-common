@@ -1,4 +1,4 @@
-package org.astri.ICDD.ASIC;
+package org.astri.icdd.asic;
 
 import java.util.ArrayList;
 import java.util.Collections;
