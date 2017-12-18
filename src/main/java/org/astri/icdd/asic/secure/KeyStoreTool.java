@@ -30,7 +30,7 @@ public class KeyStoreTool {
 
     public KeyManager[] getKeyManagers(@Nullable String keyStorePwd) throws UnrecoverableKeyException, NoSuchAlgorithmException, KeyStoreException {
 
-        String algo= KeyManagerFactory.getDefaultAlgorithm();//Android "PKIX",Java "SunX509"
+        String algo= KeyManagerFactory.getDefaultAlgorithm();//Android:"PKIX",Java:"SunX509"
         KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance(algo);
         keyManagerFactory.init(keyStore,keyStorePwd==null?null:keyStorePwd.toCharArray());
         KeyManager[] result = keyManagerFactory.getKeyManagers();//Android:"com.android.org.conscrypt.KeyManagerImpl"
@@ -40,7 +40,7 @@ public class KeyStoreTool {
     }
 
     public TrustManager[] genTrustedManagers() throws NoSuchAlgorithmException, KeyStoreException {
-        String algo = TrustManagerFactory.getDefaultAlgorithm();//Android："PKIX" ; Java: "SunX509"
+        String algo = TrustManagerFactory.getDefaultAlgorithm();//Android:"PKIX", Java: "SunX509"
         TrustManagerFactory tmf = TrustManagerFactory.getInstance(algo);
         tmf.init(keyStore);
         TrustManager[] trustManagers = tmf.getTrustManagers();//length == 1, Android: com.android.org.conscrypt.TrustManagerImpl
