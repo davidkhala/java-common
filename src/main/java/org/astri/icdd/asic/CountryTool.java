@@ -52,9 +52,6 @@ public class CountryTool {
         String prefix = m.group(1);
         String serial = m.group(2);
         String checkdigit = m.group(3);
-        System.out.println(prefix);
-        System.out.println(serial);
-        System.out.println(checkdigit);
         long value = 0;
         if (prefix.length() == 2) {
             value += (prefix.charAt(0) - 55) * 9 + (prefix.charAt(1) - 55) * 8;
