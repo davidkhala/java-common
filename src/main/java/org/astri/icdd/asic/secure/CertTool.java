@@ -32,6 +32,10 @@ public class CertTool {
         return get(is, null, null);
     }
 
+    public static Certificate get(InputStream caInput) throws CertificateException, NoSuchProviderException, IOException {
+        return get(caInput, null, null);
+    }
+
     public static Certificate get(InputStream caInput, @Nullable String certType, @Nullable String certProvider) throws CertificateException, NoSuchProviderException, IOException {
 
         String type = certType == null ? defaultCertType : certType;
