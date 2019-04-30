@@ -1,4 +1,4 @@
-package org.astri.icdd.asic.secure;
+package org.hyperledger.secure;
 
 import org.spongycastle.asn1.x500.X500Name;
 import org.spongycastle.operator.OperatorCreationException;

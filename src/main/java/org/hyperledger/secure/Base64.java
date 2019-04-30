@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.astri.icdd.asic.secure;
+package org.hyperledger.secure;
 
 import java.io.UnsupportedEncodingException;
 

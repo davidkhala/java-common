@@ -1,4 +1,4 @@
-package org.astri.icdd.asic.secure;
+package org.hyperledger.secure;
 
 import java.security.KeyStore;
 import java.security.KeyStoreException;

@@ -1,4 +1,4 @@
-package org.astri.icdd.asic;
+package org.hyperledger;
 
 import com.google.common.base.Preconditions;
 import com.google.common.io.Files;

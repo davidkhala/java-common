@@ -1,4 +1,4 @@
-package org.astri.icdd.asic.secure;
+package org.hyperledger.secure;
 
 import com.google.common.io.BaseEncoding;
 

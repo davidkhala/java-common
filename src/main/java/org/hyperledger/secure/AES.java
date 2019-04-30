@@ -1,4 +1,4 @@
-package org.astri.icdd.asic.secure;
+package org.hyperledger.secure;
 
 import java.nio.charset.Charset;
 import java.security.InvalidKeyException;
