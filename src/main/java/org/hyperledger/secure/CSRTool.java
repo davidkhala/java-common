@@ -18,41 +18,35 @@ import javax.security.auth.x500.X500Principal;
  */
 
 public class CSRTool {
-    public static String wrapPublicReq(PKCS10CertificationRequest csr)
-    {
-        byte CSRder[] ;
-        try {
-            CSRder = csr.getEncoded();
-            String publicreq = new String(Base64.encode(CSRder,Base64.DEFAULT));
-            publicreq = "-----BEGIN NEW CERTIFICATE REQUEST-----\n"+publicreq+"-----END NEW CERTIFICATE REQUEST-----";
-            return publicreq;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
+	public static String wrapPublicReq(PKCS10CertificationRequest csr) throws IOException {
+		byte[] CSRder;
+		CSRder = csr.getEncoded();
+		String publicreq = new String(Base64.encode(CSRder, Base64.DEFAULT));
+		publicreq = "-----BEGIN NEW CERTIFICATE REQUEST-----\n" + publicreq + "-----END NEW CERTIFICATE REQUEST-----";
+		return publicreq;
+	}
 
-    public static PKCS10CertificationRequest generateCSR(KeyPair keyPair, X500Principal x500Principal) throws IOException,
-            OperatorCreationException {
-        PKCS10CertificationRequestBuilder p10Builder = new JcaPKCS10CertificationRequestBuilder(
-                x500Principal, keyPair.getPublic());
+	public static PKCS10CertificationRequest generateCSR(KeyPair keyPair, X500Principal x500Principal) throws IOException,
+			OperatorCreationException {
+		PKCS10CertificationRequestBuilder p10Builder = new JcaPKCS10CertificationRequestBuilder(
+				x500Principal, keyPair.getPublic());
 
-        JcaContentSignerBuilder csBuilder = new JcaContentSignerBuilder("SHA256withRSA");
-        ContentSigner signer = csBuilder.build(keyPair.getPrivate());
-        PKCS10CertificationRequest csr = p10Builder.build(signer);
+		JcaContentSignerBuilder csBuilder = new JcaContentSignerBuilder("SHA256withRSA");
+		ContentSigner signer = csBuilder.build(keyPair.getPrivate());
+		PKCS10CertificationRequest csr = p10Builder.build(signer);
 
-        return csr;
-    }
+		return csr;
+	}
 
-    public static PKCS10CertificationRequest generateCSR(KeyPair keyPair, X500Name x500Name) throws IOException,
-            OperatorCreationException {
-        PKCS10CertificationRequestBuilder p10Builder = new JcaPKCS10CertificationRequestBuilder(
-                x500Name, keyPair.getPublic());
+	public static PKCS10CertificationRequest generateCSR(KeyPair keyPair, X500Name x500Name) throws IOException,
+			OperatorCreationException {
+		PKCS10CertificationRequestBuilder p10Builder = new JcaPKCS10CertificationRequestBuilder(
+				x500Name, keyPair.getPublic());
 
-        JcaContentSignerBuilder csBuilder = new JcaContentSignerBuilder("SHA256withRSA");
-        ContentSigner signer = csBuilder.build(keyPair.getPrivate());
-        PKCS10CertificationRequest csr = p10Builder.build(signer);
+		JcaContentSignerBuilder csBuilder = new JcaContentSignerBuilder("SHA256withRSA");
+		ContentSigner signer = csBuilder.build(keyPair.getPrivate());
+		PKCS10CertificationRequest csr = p10Builder.build(signer);
 
-        return csr;
-    }
+		return csr;
+	}
 }
