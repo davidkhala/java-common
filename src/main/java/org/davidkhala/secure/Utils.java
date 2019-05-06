@@ -1,4 +1,4 @@
-package org.hyperledger.secure;
+package org.davidkhala.secure;
 
 import com.google.common.io.BaseEncoding;
 

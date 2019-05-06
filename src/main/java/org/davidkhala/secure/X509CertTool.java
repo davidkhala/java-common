@@ -1,4 +1,4 @@
-package org.hyperledger.secure;
+package org.davidkhala.secure;
 
 import org.spongycastle.asn1.x500.X500Name;
 import org.spongycastle.operator.OperatorCreationException;
@@ -10,7 +10,6 @@ import java.security.NoSuchAlgorithmException;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

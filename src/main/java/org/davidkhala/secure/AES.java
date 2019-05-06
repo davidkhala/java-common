@@ -1,4 +1,4 @@
-package org.hyperledger.secure;
+package io.davidkhala.secure;
 
 import java.nio.charset.Charset;
 import java.security.InvalidKeyException;

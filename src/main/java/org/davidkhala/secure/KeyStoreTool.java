@@ -1,19 +1,13 @@
-package org.hyperledger.secure;
+package org.davidkhala.secure;
 
-import java.security.KeyStore;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.UnrecoverableEntryException;
-import java.security.UnrecoverableKeyException;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.annotation.Nullable;
 import javax.net.ssl.KeyManager;
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
+import java.security.*;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by davidliu on 11/4/2016.
@@ -28,7 +22,7 @@ public class KeyStoreTool {
     }
 
 
-    public KeyManager[] getKeyManagers(@Nullable String keyStorePwd) throws UnrecoverableKeyException, NoSuchAlgorithmException, KeyStoreException {
+    public KeyManager[] getKeyManagers(String keyStorePwd) throws UnrecoverableKeyException, NoSuchAlgorithmException, KeyStoreException {
 
         String algo= KeyManagerFactory.getDefaultAlgorithm();//Android:"PKIX",Java:"SunX509"
         KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance(algo);

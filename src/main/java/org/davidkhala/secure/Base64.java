@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.hyperledger.secure;
+package io.davidkhala.secure;
 
 import java.io.UnsupportedEncodingException;
 

@@ -1,4 +1,4 @@
-package org.hyperledger.secure;
+package org.davidkhala.secure;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
