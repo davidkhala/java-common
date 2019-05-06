@@ -1,4 +1,4 @@
-package io.davidkhala.secure;
+package org.davidkhala.secure;
 
 import java.nio.charset.Charset;
 import java.security.InvalidKeyException;

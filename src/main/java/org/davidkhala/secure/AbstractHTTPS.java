@@ -1,4 +1,4 @@
-package io.davidkhala.secure;
+package org.davidkhala.secure;
 
 import javax.net.ssl.*;
 import java.security.*;
