@@ -3,14 +3,9 @@ package org.hyperledger;
 import com.google.common.base.Preconditions;
 import com.google.common.io.Files;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.net.URI;
 
-import javax.annotation.Nonnull;
 
 /**
  * Created by davidliu on 9/29/2016.
@@ -43,7 +38,7 @@ public class FileTool {
         return new String(buffer);
     }
 
-    public static int copyDir(@Nonnull File from,@Nonnull File to) throws IOException {
+    public static int copyDir(File from, File to) throws IOException {
         Preconditions.checkArgument(from.isDirectory(),"source file should be directory:"+from.getPath());
         Preconditions.checkArgument(to.isDirectory(),"target file should be directory:"+to.getPath());
         File[] files = from.listFiles();

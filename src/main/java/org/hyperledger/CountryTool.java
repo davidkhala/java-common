@@ -6,7 +6,6 @@ import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.annotation.Nullable;
 
 /**
  * Created by davidliu on 2/4/2017.
@@ -32,7 +31,7 @@ public class CountryTool {
     public static String trimBrackets(String string){
         return string.replaceAll("[()]","");
     }
-    public static @Nullable String trimHKID(String hkid,boolean isStrict){
+    public static String trimHKID(String hkid,boolean isStrict){
         String HKID = hkid.toUpperCase();
         int length = HKID.length();
         if(isStrict){
