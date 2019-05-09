@@ -1,4 +1,4 @@
-package org.davidkhala.secure;
+package org.davidkhala.common.secure;
 
 import java.io.*;
 import java.security.NoSuchProviderException;

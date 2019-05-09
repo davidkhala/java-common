@@ -1,4 +1,4 @@
-package org.davidkhala;
+package org.davidkhala.common;
 
 import com.google.common.base.Preconditions;
 import com.google.common.io.Files;

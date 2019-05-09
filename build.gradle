@@ -1,8 +1,27 @@
+plugins {
+    id "com.jfrog.bintray" version "1.8.4"
+}
 apply plugin: 'java'
+apply plugin: 'java-library'
 
 repositories {
     mavenCentral()
 }
+bintray {
+    user = System.getenv('BINTRAY_USER')
+    key = 'e3e886f0da913585a9bb8450a83998da2a4c87a4'
+    configurations = ['archives']
+    pkg {
+        repo = 'maven'
+        name = ' org.davidkhala.common '
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/davidkhala/java-common.git'
+    }
+    version {
+        name = '0.0.0'
+    }
+}
+
 dependencies {
     compile 'com.google.guava:guava:18.0'
     compile 'com.madgag.spongycastle:pkix:1.51.0.0'
@@ -10,7 +29,7 @@ dependencies {
     compile 'junit:junit:4.12'//TODO how to export testCompile
 }
 
-if(!project.hasProperty("useJack") || !project.useJack){
-    sourceCompatibility="1.7"
-    targetCompatibility="1.7"
+if (!project.hasProperty("useJack") || !project.useJack) {
+    sourceCompatibility = "1.7"
+    targetCompatibility = "1.7"
 }

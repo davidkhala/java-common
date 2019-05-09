@@ -1,4 +1,4 @@
-package org.davidkhala;
+package org.davidkhala.common;
 
 import java.util.ArrayList;
 import java.util.Collections;

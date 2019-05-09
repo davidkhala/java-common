@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.davidkhala.secure;
+package org.davidkhala.common.secure;
 
 import java.io.UnsupportedEncodingException;
 

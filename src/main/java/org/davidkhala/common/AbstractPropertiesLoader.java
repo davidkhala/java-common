@@ -1,4 +1,4 @@
-package org.davidkhala;
+package org.davidkhala.common;
 
 import java.io.IOException;
 import java.io.InputStream;
