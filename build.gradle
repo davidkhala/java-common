@@ -8,12 +8,12 @@ repositories {
     mavenCentral()
 }
 bintray {
-    user = System.getenv('BINTRAY_USER')
+    user = 'davidkhala'
     key = 'e3e886f0da913585a9bb8450a83998da2a4c87a4'
     configurations = ['archives']
     pkg {
-        repo = 'maven'
-        name = ' org.davidkhala.common '
+        repo = 'java-common'
+        name = 'org.davidkhala.common'
         licenses = ['Apache-2.0']
         vcsUrl = 'https://github.com/davidkhala/java-common.git'
     }
