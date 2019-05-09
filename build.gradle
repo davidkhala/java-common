@@ -16,10 +16,11 @@ bintray {
         name = 'org.davidkhala.common'
         licenses = ['Apache-2.0']
         vcsUrl = 'https://github.com/davidkhala/java-common.git'
+        version {
+            name = '0.0.0'
+        }
     }
-    version {
-        name = '0.0.0'
-    }
+
 }
 
 dependencies {
