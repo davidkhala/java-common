@@ -1,4 +1,4 @@
-package org.davidkhala;
+package org.davidkhala.common;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
