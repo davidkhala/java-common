@@ -1,10 +1,9 @@
 package org.davidkhala.common;
 
-import com.google.common.base.Preconditions;
-import com.google.common.io.Files;
 
 import java.io.*;
 import java.net.URI;
+import java.nio.file.Files;
 
 
 /**
@@ -39,8 +38,8 @@ public class FileTool {
     }
 
     public static int copyDir(File from, File to) throws IOException {
-        Preconditions.checkArgument(from.isDirectory(),"source file should be directory:"+from.getPath());
-        Preconditions.checkArgument(to.isDirectory(),"target file should be directory:"+to.getPath());
+//        Preconditions.checkArgument(from.isDirectory(),"source file should be directory:"+from.getPath());
+//        Preconditions.checkArgument(to.isDirectory(),"target file should be directory:"+to.getPath());
         File[] files = from.listFiles();
         if(files==null)return -1;
         for(File file: files){
@@ -50,7 +49,8 @@ public class FileTool {
                     copyDir(file,targetFile);
                 }
             }else {
-                Files.copy(file,targetFile);
+
+//                Files.copy(file.toPath(), targetFile.toPath());
             }
         }
         return files.length;
