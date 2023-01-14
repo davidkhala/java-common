@@ -28,6 +28,10 @@ dependencies {
     compile 'com.madgag.spongycastle:pkix:1.51.0.0'
     compile 'org.bouncycastle:bcpkix-jdk15on:1.55'
     compile 'junit:junit:4.12'//TODO how to export testCompile
+    implementation 'org.jetbrains.kotlin:kotlin-scripting-common'
+    implementation 'org.jetbrains.kotlin:kotlin-scripting-jvm'
+    implementation 'org.jetbrains.kotlin:kotlin-scripting-jvm-host'
+
 }
 
 if (!project.hasProperty("useJack") || !project.useJack) {
