@@ -40,7 +40,7 @@ public class Reflection {
     }
 
     public static boolean isWrapperType(Class<?> clazz) {
-        return WRAPPER_TYPES.keySet().contains(clazz);
+        return WRAPPER_TYPES.containsKey(clazz);
     }
 
     public Object method(String methodName, Object... args) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {

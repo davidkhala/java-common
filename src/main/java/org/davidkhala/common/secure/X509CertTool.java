@@ -28,7 +28,7 @@ public class X509CertTool {
 	public static String extractSubjectCN(X509Certificate certificate) {
 		String identity = null;
 
-		String name = certificate.getSubjectDN().getName();
+		String name = certificate.getSubjectX500Principal().getName();
 		Pattern pattern = Pattern.compile(CN_REGEX);
 		Matcher matcher = pattern.matcher(name);
 		if (matcher.find()) {
@@ -43,7 +43,7 @@ public class X509CertTool {
 	public static String extractIssuerCN(X509Certificate certificate) {
 		String identity = null;
 
-		String name = certificate.getIssuerDN().getName();
+		String name = certificate.getIssuerX500Principal().getName();
 		Pattern pattern = Pattern.compile(CN_REGEX);
 		Matcher matcher = pattern.matcher(name);
 		if (matcher.find()) {
@@ -62,7 +62,7 @@ public class X509CertTool {
 	public static class CsrHelper {
 
 
-		public static PKCS10CertificationRequest generateCSR(KeyPair keyPair, String cn) throws IOException, NoSuchAlgorithmException, OperatorCreationException {
+		public static PKCS10CertificationRequest generateCSR(KeyPair keyPair, String cn) throws IOException, OperatorCreationException {
 
 			return CSRTool.generateCSR(keyPair, getX500Principal(cn));
 		}
