@@ -6,3 +6,4 @@ java11() {
 	sudo apt install -y oracle-java11-installer
 	sudo apt install -y oracle-java11-set-default
 }
+$@
