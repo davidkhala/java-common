@@ -1,4 +1,4 @@
-package org.davidkhala.common.secure;
+package davidkhala.common.secure;
 
 import org.spongycastle.asn1.x500.X500Name;
 import org.spongycastle.operator.ContentSigner;

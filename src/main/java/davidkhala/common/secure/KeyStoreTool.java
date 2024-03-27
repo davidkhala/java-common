@@ -1,4 +1,4 @@
-package org.davidkhala.common.secure;
+package davidkhala.common.secure;
 
 import javax.net.ssl.KeyManager;
 import javax.net.ssl.KeyManagerFactory;

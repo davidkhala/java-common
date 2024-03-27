@@ -1,6 +1,6 @@
 package secure;
 
-import org.davidkhala.common.secure.X509CertTool;
+import davidkhala.common.secure.X509CertTool;
 import org.junit.Test;
 import org.spongycastle.asn1.x500.X500Name;
 

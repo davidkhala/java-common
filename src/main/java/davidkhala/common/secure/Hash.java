@@ -1,4 +1,4 @@
-package org.davidkhala.common.secure;
+package davidkhala.common.secure;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

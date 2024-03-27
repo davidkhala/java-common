@@ -1,4 +1,4 @@
-package org.davidkhala.common;
+package davidkhala.common;
 
 
 import java.io.*;

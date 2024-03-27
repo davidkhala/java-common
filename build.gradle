@@ -11,7 +11,9 @@ publishing {
     publications {
         github(MavenPublication) {
             group 'davidkhala'
+            artifactId 'common'
             version "0.0.0"
+            from(components.java)
         }
     }
     repositories {
