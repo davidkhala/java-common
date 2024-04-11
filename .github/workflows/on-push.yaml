@@ -16,5 +16,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
-      - run: ./scripts/install.sh java11
+      - run: ./scripts/install.sh # TODO
 
