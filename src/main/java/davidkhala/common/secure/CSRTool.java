@@ -13,10 +13,6 @@ import java.security.KeyPair;
 
 import javax.security.auth.x500.X500Principal;
 
-/**
- * Created by davidliu on 1/23/2017.
- */
-
 public class CSRTool {
 	public static String wrapPublicReq(PKCS10CertificationRequest csr) throws IOException {
 		byte[] CSRder;

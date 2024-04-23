@@ -3,20 +3,11 @@ package davidkhala.common;
 
 import java.io.*;
 import java.net.URI;
-import java.nio.file.Files;
-
-
-/**
- * Created by davidliu on 9/29/2016.
- */
+import java.util.Objects;
 
 public class FileTool {
     public static void write(File targetFile, String content) throws IOException {
-        targetFile.createNewFile();
         FileOutputStream fop = new FileOutputStream(targetFile);
-
-
-        // get the content in bytes
         byte[] contentInBytes = content.getBytes();
 
         fop.write(contentInBytes);
@@ -24,43 +15,25 @@ public class FileTool {
         fop.close();
     }
 
+    public static boolean overwrite(File targetFile, String content) throws IOException {
+        boolean noExist = targetFile.createNewFile();
+        if (noExist) {
+            return false;
+        }
+
+        FileTool.write(targetFile, content);
+        return true;
+    }
+
     public static String read(File targetFile) throws IOException {
         FileInputStream is = new FileInputStream(targetFile);
-        return read(is);
-    }
-
-    public static String read(InputStream is) throws IOException {
-        int size = is.available();
-        byte[] buffer = new byte[size];
-        is.read(buffer);
-        is.close();
-        return new String(buffer);
-    }
-
-    public static int copyDir(File from, File to) throws IOException {
-//        Preconditions.checkArgument(from.isDirectory(),"source file should be directory:"+from.getPath());
-//        Preconditions.checkArgument(to.isDirectory(),"target file should be directory:"+to.getPath());
-        File[] files = from.listFiles();
-        if(files==null)return -1;
-        for(File file: files){
-            File targetFile = new File(to,file.getName());
-            if(file.isDirectory()){
-                if(targetFile.mkdir()){
-                    copyDir(file,targetFile);
-                }
-            }else {
-
-//                Files.copy(file.toPath(), targetFile.toPath());
-            }
-        }
-        return files.length;
+        return Stream.read(is);
     }
 
     public static boolean deleteDir(File dir) {
 
         boolean result = true;
-        for (File file : dir.listFiles()
-                ) {
+        for (File file : Objects.requireNonNull(dir.listFiles())) {
 
             if (file.isDirectory()) {
                 if (!deleteDir(file)) result = false;
@@ -69,16 +42,14 @@ public class FileTool {
         }
         return result;
     }
+
     public static String getExtensionName(String filename) {
-        if ((filename != null) && (filename.length() > 0)) {
+        if (filename != null && !filename.isEmpty()) {
             int dot = filename.lastIndexOf('.');
-            if ((dot >-1) && (dot < (filename.length() - 1))) {
+            if ((dot > -1) && (dot < (filename.length() - 1))) {
                 return filename.substring(dot + 1);
             }
         }
         return filename;
-    }
-    public static File fromURI(URI uri){
-        return new File(uri);
     }
 }

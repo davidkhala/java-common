@@ -9,10 +9,6 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by davidliu on 11/4/2016.
- */
-
 public class KeyStoreTool {
 
     KeyStore keyStore;

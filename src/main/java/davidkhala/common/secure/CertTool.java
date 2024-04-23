@@ -6,10 +6,6 @@ import java.security.cert.Certificate;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 
-/**
- * Created by davidliu on 1/23/2017.
- */
-
 public class CertTool {
 	static String defaultCertType = "X.509";
 	static String defaultProvider = "BC";

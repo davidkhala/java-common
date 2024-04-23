@@ -15,10 +15,6 @@ import java.util.regex.Pattern;
 
 import javax.security.auth.x500.X500Principal;
 
-/**
- * Created by davidliu on 11/4/2016.
- */
-
 public class X509CertTool {
 
 	public final static String CN_PATTERN = "CN=%s, OU=%s, O=%s, L=%s, ST=%s, C=%s";
@@ -54,10 +50,6 @@ public class X509CertTool {
 
 		return identity;
 	}
-
-	/**
-	 * Created by davidliu on 11/8/2016.
-	 */
 
 	public static class CsrHelper {
 

@@ -1,18 +1,17 @@
 package secure;
 
 import davidkhala.common.secure.X509CertTool;
+import javax.security.auth.x500.X500Principal;
 import org.junit.Test;
 import org.spongycastle.asn1.x500.X500Name;
 
-import javax.security.auth.x500.X500Principal;
-import java.io.IOException;
-
-public class x509Cert {
+public class X509CertTest {
 	@Test
-	public void getX500Cert() throws IOException {
+	public void getX500Cert()  {
 		X500Name x500Name = X509CertTool.CsrHelper.getX500Name("david", "mediconcen");
-		System.out.println(x500Name.toString());
+		assert x500Name.toString().equals("CN=david,OU=mediconcen,O=,L=,ST=,C=");
+
 		X500Principal x500Principal = X509CertTool.CsrHelper.getX500Principal("david");
-		System.out.println(x500Principal.toString());
+		assert x500Principal.toString().equals("CN=david, OU=, O=, L=, ST=, C=");
 	}
 }

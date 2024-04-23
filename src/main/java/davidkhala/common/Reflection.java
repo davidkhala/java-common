@@ -6,26 +6,22 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by davidliu on 2018/1/10.
- */
-
 public class Reflection {
     Object object;
 
-    Class clazz;
+    Class<?> clazz;
     public Reflection(Object object) {
         this.object = object;
         this.clazz = object.getClass();
     }
-    public Reflection asSuperClass(Class clazz){
+    public Reflection asSuperClass(Class<?> clazz){
         if(clazz.isInstance(object)){
             this.clazz = clazz;
         }
         return this;
     }
 
-    private static final Map<Class, Class> WRAPPER_TYPES = new HashMap<>();
+    private static final Map<Class<?>, Class<?>> WRAPPER_TYPES = new HashMap<>();
 
     static {
         WRAPPER_TYPES.put(Boolean.class, Boolean.TYPE);
@@ -44,7 +40,7 @@ public class Reflection {
     }
 
     public Object method(String methodName, Object... args) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        Class[] argClasses = new Class[args.length];
+        Class<?>[] argClasses = new Class[args.length];
         for (int i = 0; i < args.length; i++) {
             Class<?> argClass = args[i].getClass();
             if (isWrapperType(argClass)) {

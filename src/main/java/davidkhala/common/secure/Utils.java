@@ -5,10 +5,6 @@ import com.google.common.io.BaseEncoding;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-/**
- * Created by davidliu on 2/1/2017.
- */
-
 public class Utils {
     /**
      * Hex encoding used throughout the framework. Use with HEX.encode(byte[]) or HEX.decode(CharSequence).

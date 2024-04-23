@@ -3,10 +3,6 @@ package davidkhala.common.secure;
 import javax.net.ssl.*;
 import java.security.*;
 
-/**
- * Created by davidliu on 11/9/2016.
- */
-
 public abstract class AbstractHTTPS {
 	public static SSLSocketFactory getSSLSocketFactory(KeyStore keyStore, String keyStorePwd, KeyStore trustKeyStore) throws KeyStoreException, NoSuchAlgorithmException, UnrecoverableKeyException, KeyManagementException {
 		TrustManager[] trustManagers = new KeyStoreTool(trustKeyStore).genTrustedManagers();
