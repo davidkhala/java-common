@@ -8,11 +8,17 @@ public class Stream {
     public static String read(InputStream is) throws IOException {
         int size = is.available();
         byte[] buffer = new byte[size];
-        is.read(buffer);
+        while (true) {
+            if (is.read(buffer) < 0) {
+                break;
+            }
+        }
+
         is.close();
         return new String(buffer);
     }
-    public static InputStream from(String string) throws IOException {
+
+    public static InputStream from(String string) {
         return new ByteArrayInputStream(string.getBytes());
     }
 }
