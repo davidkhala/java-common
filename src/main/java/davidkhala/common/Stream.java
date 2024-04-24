@@ -1,5 +1,6 @@
 package davidkhala.common;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -10,5 +11,8 @@ public class Stream {
         is.read(buffer);
         is.close();
         return new String(buffer);
+    }
+    public static InputStream from(String string) throws IOException {
+        return new ByteArrayInputStream(string.getBytes());
     }
 }

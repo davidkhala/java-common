@@ -12,7 +12,7 @@ publishing {
         github(MavenPublication) {
             group 'davidkhala'
             artifactId 'common'
-            version "0.0.0"
+            version "0.0.1"
             from(components.java)
         }
     }
@@ -29,20 +29,12 @@ publishing {
 }
 
 dependencies {
-//    common
+    //    com.google.common.io
     implementation('com.google.guava:guava:latest.integration')
-//    crypto
+    //    org.spongycastle
     implementation('com.madgag.spongycastle:pkix:latest.integration')
-    runtimeOnly('org.bouncycastle:bcpkix-jdk15on:latest.integration')
-//    test
+    //    test
     testImplementation('junit:junit:latest.integration')
-//    test:jdbc
-    testRuntimeOnly('io.trino:trino-jdbc:latest.integration')
-    testRuntimeOnly('org.mariadb.jdbc:mariadb-java-client:latest.integration')
-//    kotlin
-    implementation('org.jetbrains.kotlin:kotlin-scripting-common:latest.integration')
-    implementation('org.jetbrains.kotlin:kotlin-scripting-jvm:latest.integration')
-    implementation('org.jetbrains.kotlin:kotlin-scripting-jvm-host:latest.integration')
 
 }
 
