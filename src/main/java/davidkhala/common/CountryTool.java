@@ -13,7 +13,7 @@ public class CountryTool {
         ArrayList<String> countries = new ArrayList<String>();
         for (Locale locale : locales) {
             String country = locale.getDisplayCountry();
-            if (!country.trim().isEmpty() && !countries.contains(country)) {
+            if (!country.isEmpty() && !countries.contains(country)) {
                 countries.add(country);
             }
         }

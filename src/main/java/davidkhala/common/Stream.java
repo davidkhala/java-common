@@ -1,24 +1,36 @@
 package davidkhala.common;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 
 public class Stream {
-    public static String read(InputStream is) throws IOException {
-        int size = is.available();
-        byte[] buffer = new byte[size];
-        while (true) {
-            if (is.read(buffer) < 0) {
-                break;
-            }
-        }
+  public interface InputCallback {
+    void onData(int _byte);
+  }
 
-        is.close();
-        return new String(buffer);
+  public static String read(InputStream is) throws IOException {
+    int size = is.available();
+    byte[] buffer = new byte[size];
+    while (true) {
+      if (is.read(buffer) < 0) {
+        break;
+      }
     }
 
-    public static InputStream from(String string) {
-        return new ByteArrayInputStream(string.getBytes());
+    is.close();
+    return new String(buffer);
+  }
+
+  public static void read(InputStream is, InputCallback callback) throws IOException {
+    while (true) {
+      int b = is.read();
+      if (b == -1) {
+        break;
+      }
+      callback.onData(b);
     }
+  }
+
+  public static InputStream from(String string) {
+    return new ByteArrayInputStream(string.getBytes());
+  }
 }

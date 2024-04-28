@@ -2,7 +2,6 @@ package davidkhala.common;
 
 
 import java.io.*;
-import java.net.URI;
 import java.util.Objects;
 
 public class FileTool {

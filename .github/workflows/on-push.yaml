@@ -1,20 +1,16 @@
 name: test
 on: push
 jobs:
-  liberica:
+  code:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
-      - uses: actions/setup-java@main
-        with:
-          java-version: '21'
-          distribution: 'liberica'
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
-      - run: gradle build
+      - uses: davidkhala/setup-gradle@main
+      - run: gradle test
   scripts:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
-      - run: ./scripts/install.sh # TODO
+      - uses: davidkhala/setup-gradle@main
+      - run: ./scripts/gradle.sh version
 

@@ -1,5 +1,5 @@
 build
 .idea
-gradle*
+gradle/*
 .gradle
 out
