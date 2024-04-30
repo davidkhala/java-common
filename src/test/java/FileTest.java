@@ -1,9 +1,11 @@
 import davidkhala.common.FileTool;
+import davidkhala.common.Resource;
 import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
+import java.net.URISyntaxException;
 
 public class FileTest {
     @Test
@@ -29,5 +31,21 @@ public class FileTest {
         URI uri = URI.create(uriStr);
         File file = new File(uri);
         assert file.toURI().toString().equals(uriStr);
+    }
+
+    @Test
+    public void getTestResourceFile() throws URISyntaxException, IOException {
+        String notFound = "fixture";
+        try {
+            Resource.getFile(notFound);
+        } catch (java.lang.IllegalArgumentException e) {
+            assert e.getMessage().equals("resource %s not found.".formatted(notFound));
+        }
+        String name = ".env";
+        File file = Resource.getFile(".env");
+        assert name.equals(file.getName());
+        String content= FileTool.read(file);
+        assert content.equals("module=test");
+
     }
 }
