@@ -7,18 +7,19 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class PropertiesLoaderTest {
-    @Test
-    public void loadProperties() throws IOException {
+  @Test
+  public void loadProperties() throws IOException {
 
-        AbstractPropertiesLoader loader = new AbstractPropertiesLoader(){
+    AbstractPropertiesLoader loader =
+        new AbstractPropertiesLoader() {
 
-            @Override
-            protected InputStream propertiesProvider() throws IOException {
-                return Stream.from("a=b");
-            }
+          @Override
+          protected InputStream propertiesProvider() {
+            return Stream.from("a=b");
+          }
         };
-        Properties properties = loader.getProperties();
-        System.out.println(properties);
-        assert properties.get("a").equals("b");
-    }
+    Properties properties = loader.getProperties();
+    System.out.println(properties);
+    assert properties.get("a").equals("b");
+  }
 }

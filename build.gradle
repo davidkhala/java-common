@@ -13,7 +13,7 @@ publishing {
             group 'davidkhala'
             artifactId 'common'
             version "0.0.1"
-            from(components.java)
+            from components.java
         }
     }
     repositories {
