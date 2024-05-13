@@ -28,6 +28,7 @@ public class Stream {
       }
       callback.onData(b);
     }
+    is.close();
   }
 
   public static InputStream from(String string) {

@@ -1,4 +1,6 @@
-package davidkhala.common.secure;
+package davidkhala.http;
+
+import davidkhala.common.secure.KeyStoreTool;
 
 import javax.net.ssl.*;
 import java.security.*;

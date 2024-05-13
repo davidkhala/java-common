@@ -17,7 +17,7 @@ public class CSRTool {
 	public static String wrapPublicReq(PKCS10CertificationRequest csr) throws IOException {
 		byte[] CSRder;
 		CSRder = csr.getEncoded();
-		String publicreq = new String(Base64.encode(CSRder, Base64.DEFAULT));
+		String publicreq = new String(java.util.Base64.getEncoder().encodeToString(CSRder));
 		publicreq = "-----BEGIN NEW CERTIFICATE REQUEST-----\n" + publicreq + "-----END NEW CERTIFICATE REQUEST-----";
 		return publicreq;
 	}
