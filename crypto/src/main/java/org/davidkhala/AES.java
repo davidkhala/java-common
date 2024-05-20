@@ -3,7 +3,6 @@ package org.davidkhala;
 import java.nio.charset.Charset;
 import java.security.InvalidKeyException;
 import java.security.Key;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import javax.crypto.BadPaddingException;
@@ -15,25 +14,12 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
 public class AES {
-    public static byte[] hash(byte[] data) {
-        try {
-            MessageDigest e = MessageDigest.getInstance("SHA-256");
-            e.update(data);
-            return e.digest();
-        } catch (NoSuchAlgorithmException var2) {
-            var2.printStackTrace();
-            return null;
-        }
-    }
 
     public static byte[] encrypt(byte[] key, byte[] inputValue)
             throws NoSuchPaddingException, BadPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, InvalidKeyException {
         SecretKeySpec sKeyS = new SecretKeySpec(key, "AES");
 
-        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-        cipher.init(Cipher.ENCRYPT_MODE, sKeyS);
-
-        return cipher.doFinal(inputValue);
+        return encrypt(sKeyS, inputValue);
     }
 
     public static byte[] encrypt(Key key, byte[] inputValue)
@@ -50,10 +36,7 @@ public class AES {
             throws NoSuchPaddingException, BadPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, InvalidKeyException {
         SecretKeySpec sKeyS = new SecretKeySpec(key, "AES");
 
-        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-        cipher.init(Cipher.DECRYPT_MODE, sKeyS);
-
-        return cipher.doFinal(encryptedData);
+        return decrypt(sKeyS, encryptedData);
     }
 
     public static byte[] decrypt(Key key, byte[] encryptedData)
@@ -66,32 +49,23 @@ public class AES {
         return cipher.doFinal(encryptedData);
     }
 
-    public static Key generateKey(int keysize,  String password)
-    {
-        return generateKey(keysize,"AES",password);
+    public static Key generateKey(int keysize, @javax.annotation.Nonnull String password) throws NoSuchAlgorithmException {
+        return generateKey(keysize, "AES", password);
     }
-    public static Key wrapKey(byte[] keyEncoded)
-    {
+
+    public static Key generateKey(int keysize, String algorithm, @javax.annotation.Nonnull String password) throws NoSuchAlgorithmException {
+        SecureRandom e = SecureRandom.getInstance("SHA1PRNG");
+        byte[] hash = Hash.SHA2_256(password.getBytes(Charset.forName("UTF-8")));
+        e.setSeed(hash);
+        KeyGenerator keyGen = KeyGenerator.getInstance(algorithm);
+        keyGen.init(keysize, e);
+        SecretKey secret = keyGen.generateKey();
+
+        SecretKeySpec keySpec = new SecretKeySpec(secret.getEncoded(), algorithm);
+        return keySpec;
+    }
+
+    public static Key wrapKey(byte[] keyEncoded) {
         return new SecretKeySpec(keyEncoded, "AES");
-    }
-
-    public static Key generateKey(int keysize, String algorithm, String password) {
-        if(password != null) {
-            try {
-                SecureRandom e = SecureRandom.getInstance("SHA1PRNG");
-                byte[] hash = hash(password.getBytes(Charset.forName("UTF-8")));
-                e.setSeed(hash);
-                KeyGenerator keyGen = KeyGenerator.getInstance(algorithm);
-                keyGen.init(keysize, e);
-                SecretKey secret = keyGen.generateKey();
-
-                SecretKeySpec keySpec = new SecretKeySpec(secret.getEncoded(), algorithm);
-                return keySpec;
-            } catch (NoSuchAlgorithmException var7) {
-                var7.printStackTrace();
-            }
-        }
-
-        return null;
     }
 }

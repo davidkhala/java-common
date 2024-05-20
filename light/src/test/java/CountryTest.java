@@ -14,5 +14,6 @@ public class CountryTest {
   public void validateHKID() {
     String id = "D788888(1)";
     assert CountryTool.isHKIDValid(id);
+    assert CountryTool.trimBrackets(id).equals("D7888881");
   }
 }
