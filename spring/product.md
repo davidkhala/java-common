@@ -1,6 +1,15 @@
 # Spring Cloud
 Spring Cloud based on spring boot. Spring cloud orchestrate services, each provided by spring boot
 
+major features in Spring Cloud
+- Distributed/versioned configuration
+- Service registration and discovery
+- Routing
+- Service-to-service calls
+- Load balancing
+- Circuit Breakers
+- Distributed messaging
+
 # [Spring Cloud: Data Flow](https://github.com/spring-cloud/spring-cloud-dataflow)
 
 ![](https://dataflow.spring.io/static/19e89c2894aa4586aec3336ac4e6954b/5105f/arch-overview.webp)
